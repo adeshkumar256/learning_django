@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Libertinus+Mono&display=swap');
+
+html,
+body {
+    font-family: "Libertinus Mono", monospace;
+}
+
+body {
+    background-color: rgb(39, 38, 38);
+}

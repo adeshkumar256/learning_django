@@ -11,7 +11,7 @@ from . import views  # . means from same folder and views means from views.py
 
 urlpatterns = [
     # here the sequece is important if its convertible as int can be converted to string then int route should be at top
-    path("", views.challenges),  # /challenges
+    path("", views.challenges, name="index"),  # /challenges
     path("<int:month>", views.monthly_challenge_int),
     # named path
     path("<str:month>", views.monthly_challenge, name="month-challenge")
