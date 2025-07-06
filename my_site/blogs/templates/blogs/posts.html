@@ -7,9 +7,62 @@
 {% endblock  %}
 
 {% block page_title %}
-Posts
+Blogs
 {% endblock  %}
 
 {% block content %}
-<h3>All Posts</h3>
+{% include "blogs/includes/header.html" %}
+<section id="all-posts">
+    <h2>My all posts</h2>
+    <ul>
+        <li class="post">
+            <article>
+                <h2>Understanding Django Templates</h2>
+                <img src="{% static 'blogs/images/dj.jpg' %}" alt="Django Templates">
+                <p class="address">Address</p>
+                <p class="time">Posted on June 10, 2024 by Adesh Kumar</p>
+            </article>
+        </li>
+        <li class="post">
+            <article>
+                <h2>Getting Started with Python</h2>
+                <img src="{% static 'blogs/images/python.jpg' %}" alt="Python Getting Started">
+                <p class="address">Address</p>
+                <p class="time">Posted on June 5, 2024 by Adesh Kumar</p>
+            </article>
+        </li>
+        <li class="post">
+            <article>
+                <h2>Web Development Tips</h2>
+                <img src="{% static 'blogs/images/web.jpg' %}" alt="Web Development Tips">
+                <p class="address">Address</p>
+                <p class="time">Posted on June 1, 2024 by Adesh Kumar</p>
+            </article>
+        </li>
+        <li class="post">
+            <article>
+                <h2>Understanding Django Templates</h2>
+                <img src="{% static 'blogs/images/dj.jpg' %}" alt="Django Templates">
+                <p class="address">Address</p>
+                <p class="time">Posted on June 10, 2024 by Adesh Kumar</p>
+            </article>
+        </li>
+        <li class="post">
+            <article>
+                <h2>Getting Started with Python</h2>
+                <img src="{% static 'blogs/images/python.jpg' %}" alt="Python Getting Started">
+                <p class="address">Address</p>
+                <p class="time">Posted on June 5, 2024 by Adesh Kumar</p>
+            </article>
+        </li>
+        <li class="post">
+            <article>
+                <h2>Web Development Tips</h2>
+                <img src="{% static 'blogs/images/web.jpg' %}" alt="Web Development Tips">
+                <p class="address">Address</p>
+                <p class="time">Posted on June 1, 2024 by Adesh Kumar</p>
+            </article>
+        </li>
+    </ul>
+</section>
 {% endblock  %}

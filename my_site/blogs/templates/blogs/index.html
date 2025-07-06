@@ -4,6 +4,7 @@
 
 {% block css_files %}
 <link rel="stylesheet" href="{% static "blogs/index.css" %}">
+<link rel="stylesheet" href="{% static "blogs/post.css" %}">
 {% endblock  %}
 
 {% block page_title %}
@@ -12,5 +13,46 @@ Home Page
 
 
 {% block content %}
-<h2>Index Page</h2>
+{% include "blogs/includes/header.html" %}
+<section id="welcome">
+    <div class="welcome-container">
+        <img src="{% static 'blogs/images/welcome.jpg' %}" alt="Welcome Image" class="welcome-image">
+        <div class="welcome-description">
+            <h2>Welcome to My Blog!</h2>
+            <p>
+                Discover insightful articles, tutorials, and stories. Dive in to explore the latest trends and personal experiences shared here.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="latest-posts">
+    <h2>Latest Posts</h2>
+    <ul class="latest-posts-list">
+        {% include "blogs/single_post.html" %}
+        <li class="summary">
+            <article>
+                <h2>Getting Started with Python</h2>
+                <img src="{% static 'blogs/images/python.jpg' %}" alt="Python Getting Started">
+                <p class="address">Address</p>
+                <p class="time">Posted on June 5, 2024 by Adesh Kumar</p>
+            </article>
+        </li>
+        <li class="summary">
+            <article>
+                <h2>Web Development Tips</h2>
+                <img src="{% static 'blogs/images/web.jpg' %}" alt="Web Development Tips">
+                <p class="address">Address</p>
+                <p class="time">Posted on June 1, 2024 by Adesh Kumar</p>
+            </article>
+        </li>
+    </ul>
+</section>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>
+        Hi, I'm Adesh Kumar, a passionate developer and tech enthusiast. I love sharing knowledge and helping others grow in the world of programming.
+    </p>
+</section>
 {% endblock  %}

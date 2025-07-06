@@ -1,0 +1,10 @@
+{% load static %}
+<li class="post">
+            <article>
+                <a href="{% url "post-details" "post1" %}">
+                <h2>Understanding Django Templates</h2>
+                <img src="{% static 'blogs/images/dj.jpg' %}" alt="Django Templates">
+                <p class="address">Address</p>
+                <p class="time">Posted on June 10, 2024 by Adesh Kumar</p>
+            </article>
+        </li>

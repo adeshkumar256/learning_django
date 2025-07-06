@@ -7,9 +7,26 @@
 {% endblock  %}
 
 {% block page_title %}
-{{slug | title}}
+Blog | {{slug | title}}
 {% endblock  %}
 
 {% block content %}
-<h3>{{slug | title}}</h3>
+{% include "blogs/includes/header.html" %}
+<section id="summary">
+    <h2>Post title</h2>
+    <article>
+        <img src="{% static "blogs/images/dj.jpg" %}" alt="Post Title"/>
+        <address>By Adesh</address>
+        <div>
+            Last updated on <time>July 10th 2025</time>
+        </div>
+
+    </article>
+</section>
+<main>
+    <p>{% lorem 1 b random %}</p>
+    <p>{% lorem 1 b random %}</p>
+    <p>{% lorem 1 b random %}</p>
+    <p>{% lorem 1 b random %}</p>
+</main>
 {% endblock  %}
