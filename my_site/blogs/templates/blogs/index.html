@@ -28,7 +28,11 @@ Home Page
 
 <section id="latest-posts">
     <h2>Latest Posts</h2>
+    <h5>Total no of posts: {{total_posts}}</h5>
+    <h5>Average Rating: {{avg_rating.rating__avg}}</h5>
+    <h5>Min Rating: {{avg_rating.rating__min}}</h5>
     <ul>
+        
         {% for post in posts %}
         <li>
             {% comment %} 
