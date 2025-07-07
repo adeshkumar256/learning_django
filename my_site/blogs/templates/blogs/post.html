@@ -14,6 +14,10 @@ Blog | {{slug | title}}
 {% include "blogs/includes/header.html" %}
 <section id="summary">
     <h2>Post title</h2>
+    <p>
+    <h3>From Models</h3>
+    <h2>{{post.title}}</h2>
+    </p>
     <article>
         <img src="{% static "blogs/images/dj.jpg" %}" alt="Post Title"/>
         <address>By Adesh</address>

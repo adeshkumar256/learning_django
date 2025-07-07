@@ -28,7 +28,18 @@ Home Page
 
 <section id="latest-posts">
     <h2>Latest Posts</h2>
-    <ul class="latest-posts-list">
+    <ul>
+        {% for post in posts %}
+        <li>
+            {% comment %} 
+            <a href="{% url "post-details" post.id %}">{{post.title}}</a> 
+            {% endcomment %}
+            <a href="{{ post.get_absolute_url }}">{{post.title}}</a>
+            <p>{{post.description}}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% comment %} <ul class="latest-posts-list">
         {% include "blogs/single_post.html" %}
         <li class="summary">
             <article>
@@ -46,7 +57,7 @@ Home Page
                 <p class="time">Posted on June 1, 2024 by Adesh Kumar</p>
             </article>
         </li>
-    </ul>
+    </ul> {% endcomment %}
 </section>
 
 <section id="about">
