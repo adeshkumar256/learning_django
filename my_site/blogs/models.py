@@ -26,4 +26,4 @@ class Post(models.Model):
         super().save(*args, **kwargs)  # make sure built in save is called
 
     def __str__(self):
-        return f"{self.title} {self.rating} {self.description}{self.slug}"
+        return f"{self.title} {self.rating} {self.description} {self.slug}"
