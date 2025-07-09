@@ -6,6 +6,14 @@ from django.utils.text import slugify
 # Create your models here.
 
 
+class Author(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
+
 class Post(models.Model):
     # id = models.AutoField() no need as model will automatically create
     title = models.CharField(max_length=50)
@@ -13,7 +21,9 @@ class Post(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(5)])
     description = models.CharField(max_length=500)
     # null True if it can have null value or not
-    author = models.CharField(null=True, max_length=100)
+    author = models.ForeignKey(
+        Author, on_delete=models.CASCADE, null=True, related_name="posts")
+    # relative name for one to many relationship
     slug = models.SlugField(default="", blank=True, null=False,
                             db_index=True)  # for indexing
 

@@ -5,3 +5,17 @@ Q. What are different types of relationships?
 A. One-to-Many, One-to-One, Many-to-Many.
     Example:- Book and Author:- a book belongs to an author (One-to-One). An author can write multiple books (One-to-Many)
 
+Q. One-to-Many
+A. from blogs.models import Post, Author 
+auth = Author.objects.get(first_name="Adesh")
+auth
+<Author: Adesh Kumar>
+auth.post_set # default by django can update in model definition by setting related_name="posts". SO now you can use auth.posts.all()
+Output: <django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x0000021D091952B0>
+auth.post_set.all()
+<QuerySet [<Post: Learn Django 5 Here is my description learn-django>]>
+
+Q. Apply filters on One-to-Many relationships
+A. adesh.posts.filter(description__contains="Python")
+<QuerySet [<Post: Learn Python 4 Python learn-python>]>
+
