@@ -25,5 +25,7 @@ class Post(models.Model):
     #     self.slug = slugify(self.title)
     #     super().save(*args, **kwargs)  # make sure built in save is called
 
+    # no need to overwrite save function as now we are using admin models to configure the fields
+
     def __str__(self):
         return f"{self.title} {self.rating} {self.description} {self.slug}"
