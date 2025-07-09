@@ -1,0 +1,7 @@
+Q. What is data relationship?
+A. Relationship basically referes to how one type of data is connected to another type of data. Eg. Book and Author :- a book belongs to an author and an author could have written multiple books
+
+Q. What are different types of relationships?
+A. One-to-Many, One-to-One, Many-to-Many.
+    Example:- Book and Author:- a book belongs to an author (One-to-One). An author can write multiple books (One-to-Many)
+
