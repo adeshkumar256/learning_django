@@ -14,11 +14,18 @@ Blog | {{slug | title}}
 {% include "blogs/includes/header.html" %}
 <section id="summary">
     <h2>{{post.title}}</h2>
+    <div>
+        {% for tag in post.tags.all %}
+        <span class="tag">{{tag.name}}</span> {% if not forloop.last %},{% endif %}
+        {% empty %}
+        No Tags
+        {% endfor %}
+    </div>
     <article>
         <img src="{% static "blogs/images/dj.jpg" %}" alt="Post Title"/>
         <address>{{post.author}}</address>
         <div>
-            Last updated on <time>{{post.updated_at}}</time>
+            Last updated on: <time>{{post.updated_at}}</time>
         </div>
 
     </article>
