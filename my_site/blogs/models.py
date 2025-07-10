@@ -14,6 +14,10 @@ class Address(models.Model):
     def __str__(self):
         return f"{self.street}, {self.city}, ({self.postal_code})"
 
+    class Meta:
+        # plural enteries in model then this will visible on admin portal
+        verbose_name_plural = "Address Enteries"
+
 
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
