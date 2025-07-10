@@ -2,12 +2,27 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.urls import reverse
 from django.utils.text import slugify
+from datetime import date
 
 # Create your models here.
 
+# For same model relationships you need to use self (lazy relationship)
+# class User(models.Model):
+#   # ... other fields ...
+#   friends = models.ManyToManyField('self')
+
+# if 2 models have many to many relationship with each other (circular relationsship)
+# class Product(models.Model):
+#   # ... other fields ...
+#   last_buyer = models.ForeignKey('User')
+
+# class User(models.Model):
+#   # ... other fields ...
+#   created_products = models.ManyToManyField('Product')
+
 
 class Tag(models.Model):
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=40, unique=True)
 
     def __str__(self):
         return self.name
@@ -29,6 +44,7 @@ class Address(models.Model):
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    email = models.EmailField(null=True)
     address = models.OneToOneField(
         Address, on_delete=models.CASCADE, null=True)
 
@@ -43,16 +59,21 @@ class Author(models.Model):
 
 class Post(models.Model):
     # id = models.AutoField() no need as model will automatically create
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=200)
     rating = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)])
-    description = models.CharField(max_length=500)
+    description = models.TextField(validators=[MinValueValidator(50)])
+    image = models.CharField(max_length=100, default="")
+    # Automatically set on creation
+    created_at = models.DateTimeField(auto_now_add=True)
+    # Automatically update on update
+    updated_at = models.DateTimeField(auto_now=True)
     # null True if it can have null value or not
     author = models.ForeignKey(
         Author, on_delete=models.CASCADE, null=True, related_name="posts")
     # relative name for one to many relationship
     slug = models.SlugField(default="", blank=True, null=False,
-                            db_index=True)  # for indexing
+                            db_index=True, unique=True)  # for indexing
     tags = models.ManyToManyField(Tag)
 
     def get_absolute_url(self):
