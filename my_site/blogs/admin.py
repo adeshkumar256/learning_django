@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post, Author
+from .models import Post, Author, Address
 
 # Register your models here.
 
@@ -18,5 +18,11 @@ class AuthorAdmin(admin.ModelAdmin):
     list_display = ("first_name", "last_name")
 
 
+class AddressAdmin(admin.ModelAdmin):
+    list_filter = ("postal_code",)
+    list_display = ("street", "postal_code", "city")
+
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(Author, AuthorAdmin)
+admin.site.register(Address, AddressAdmin)

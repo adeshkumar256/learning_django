@@ -19,3 +19,6 @@ Q. Apply filters on One-to-Many relationships
 A. adesh.posts.filter(description__contains="Python")
 <QuerySet [<Post: Learn Python 4 Python learn-python>]>
 
+models.ForeignKey = for many-to-one ot one-to-many
+models.OneToOneField = for one-to-one
+
