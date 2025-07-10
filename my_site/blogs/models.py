@@ -6,6 +6,10 @@ from django.utils.text import slugify
 # Create your models here.
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=40)
+
+
 class Address(models.Model):
     street = models.CharField(max_length=80)
     postal_code = models.CharField(max_length=6)
@@ -46,6 +50,7 @@ class Post(models.Model):
     # relative name for one to many relationship
     slug = models.SlugField(default="", blank=True, null=False,
                             db_index=True)  # for indexing
+    tags = models.ManyToManyField(Tag)
 
     def get_absolute_url(self):
         return reverse("post-details", args=[self.slug])
