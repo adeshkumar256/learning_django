@@ -40,6 +40,15 @@ Home Page
             {% endcomment %}
             <a href="{{ post.get_absolute_url }}">{{post.title}}</a>
             <p>{{post.description}}</p>
+            <p>{{post.author}}</p>
+            <p>
+              Tags:
+              {% for tag in post.tags.all %}
+                {{ tag.name }}{% if not forloop.last %}, {% endif %}
+              {% empty %}
+                No tags
+              {% endfor %}
+            </p>
         </li>
         {% endfor %}
     </ul>

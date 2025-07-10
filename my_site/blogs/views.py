@@ -7,6 +7,7 @@ from django.db.models import Avg, Max, Min
 def index(request):
     # - sign for desc and remove - for asc (Ordering)
     posts = Post.objects.all().order_by("-title")
+    print(posts)
     total_posts = posts.count()
     avg_rating = posts.aggregate(
         Avg("rating"), Min("rating"))  # aggregate function

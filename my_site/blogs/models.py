@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.urls import reverse
 from django.utils.text import slugify
 from datetime import date
@@ -62,8 +62,8 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     rating = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)])
-    description = models.TextField(validators=[MinValueValidator(50)])
-    image = models.CharField(max_length=100, default="")
+    description = models.TextField(validators=[MinLengthValidator(50)])
+    image = models.CharField(max_length=100, default="", null=True, blank=True)
     # Automatically set on creation
     created_at = models.DateTimeField(auto_now_add=True)
     # Automatically update on update
@@ -74,7 +74,7 @@ class Post(models.Model):
     # relative name for one to many relationship
     slug = models.SlugField(default="", blank=True, null=False,
                             db_index=True, unique=True)  # for indexing
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def get_absolute_url(self):
         return reverse("post-details", args=[self.slug])

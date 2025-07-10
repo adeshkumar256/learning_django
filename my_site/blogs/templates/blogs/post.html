@@ -13,24 +13,17 @@ Blog | {{slug | title}}
 {% block content %}
 {% include "blogs/includes/header.html" %}
 <section id="summary">
-    <h2>Post title</h2>
-    <p>
-    <h3>From Models</h3>
     <h2>{{post.title}}</h2>
-    </p>
     <article>
         <img src="{% static "blogs/images/dj.jpg" %}" alt="Post Title"/>
-        <address>By Adesh</address>
+        <address>{{post.author}}</address>
         <div>
-            Last updated on <time>July 10th 2025</time>
+            Last updated on <time>{{post.updated_at}}</time>
         </div>
 
     </article>
 </section>
 <main>
-    <p>{% lorem 1 b random %}</p>
-    <p>{% lorem 1 b random %}</p>
-    <p>{% lorem 1 b random %}</p>
-    <p>{% lorem 1 b random %}</p>
+    <p>{{post.description}}</p>
 </main>
 {% endblock  %}

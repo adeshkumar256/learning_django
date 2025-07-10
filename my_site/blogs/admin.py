@@ -9,13 +9,13 @@ class PostAdmin(admin.ModelAdmin):
     # readonly_fields = ("slug",)
     prepopulated_fields = {"slug": ("title",)}
     list_filter = ("rating", "author")  # filters
-    # to configure what to show in admin table previouslt the __str__ output was showing
+    # to configure what to show in admin table previously the __str__ output was showing
     list_display = ("id", "title", "author", "display_tags")
 
     def display_tags(self, obj):
         return ", ".join(tag.name for tag in obj.tags.all())
 
-    display_tags.short_description = "Tags"
+    display_tags.short_description = "Tags"  # for column name
 
 
 class AuthorAdmin(admin.ModelAdmin):
