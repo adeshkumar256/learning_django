@@ -9,6 +9,9 @@ from django.utils.text import slugify
 class Tag(models.Model):
     name = models.CharField(max_length=40)
 
+    def __str__(self):
+        return self.name
+
 
 class Address(models.Model):
     street = models.CharField(max_length=80)
