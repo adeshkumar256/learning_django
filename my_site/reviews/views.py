@@ -7,10 +7,15 @@ from .forms import ReviewForm
 
 def review(request):
     if request.method == 'POST':
-        user_name = request.POST.get('user_name', '')
-        email = request.POST.get('email', '')
-        return HttpResponseRedirect(f"/reviews/thank-you?user_name={user_name}&email={email}")
-    form = ReviewForm()
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            user_name = form.cleaned_data.user_name
+            email = form.cleaned_data.email
+            return HttpResponseRedirect(f"/reviews/thank-you?user_name={user_name}&email={email}")
+    else:
+        form = ReviewForm()
+
     return render(request, "reviews/review.html", {
         "form": form
     })
