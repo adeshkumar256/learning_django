@@ -1,4 +1,3 @@
-
 from django import forms
 
 
@@ -9,3 +8,16 @@ class ReviewForm(forms.Form):
     email = forms.EmailField(label="Please enter your email", error_messages={
         "required": "Email cannot be empty!"
     })
+    rating = forms.IntegerField(
+        min_value=1,
+        max_value=5,
+        label="Rating",
+        widget=forms.NumberInput(attrs={
+            'type': 'range',
+            'min': '1',
+            'max': '5',
+            'step': '1',
+            'oninput': 'this.nextElementSibling.value = this.value',
+        }),
+        error_messages={"required": "Please select a rating!"}
+    )

@@ -12,23 +12,14 @@
 <body>
     <form method="POST" action="">
         {% csrf_token %}
-        {% comment %} <label for="username">Your Name</label>
-        <input type="text" id="username" name="username" required /><br/>
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" required /> {% endcomment %}
-        <div class="form-control {% if form.user_name.errors %}errors {% endif %}">
-            {{ form.user_name.label_tag }}
-            {{ form.user_name }}
-            {{ form.user_name.errors }}
-        </div>
-        <div class="form-control {% if form.user_name.errors %}errors {% endif %}">
-            {{ form.email.label_tag }}
-            {{ form.email }}
-            {{ form.email.errors }}
-        </div>
-       
-        {% comment %} Instead of rendering complete form we can use separate element names {% endcomment %}
-        {% comment %} {{form}} {% endcomment %}
+        {% for field in form %}
+            <div class="form-control {% if field.errors %}errors{% endif %}">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.name == 'rating' %}<output>3</output>{% endif %}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
         <button>Send</button>
     </form>
 
