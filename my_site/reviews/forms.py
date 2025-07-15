@@ -36,7 +36,11 @@ class ReviewForm(forms.ModelForm):
         error_messages = {
             "user_name": {
                 "required": "Your name must not be empty!"
-            }
+            },
+            "email": {
+                "required": "Email cannot be empty!"
+            },
+            "rating": {"required": "Please select a rating!"}
         }
         widgets = {
             "rating": forms.NumberInput(attrs={
