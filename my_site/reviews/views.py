@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from .forms import ReviewForm
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Review
 
 # Create your views here.
@@ -58,15 +58,29 @@ class ReviewListView(ListView):
     #     return context
 
 
-class SingleReviewView(TemplateView):
+class SingleReviewView(DetailView):
     template_name = "reviews/single_review.html"
+    model = Review
+    context_object_name = "review"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        review_id = kwargs["id"]
-        review = Review.objects.get(pk=review_id)
-        context['review'] = review
-        return context
+    ? need to change the param name to ** pk ** in urls so that it can search by primary key
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     review_id = kwargs["id"]
+    #     review = Review.objects.get(pk=review_id)
+    #     context['review'] = review
+    #     return context
+
+# class SingleReviewView(TemplateView):
+#     template_name = "reviews/single_review.html"
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         review_id = kwargs["id"]
+#         review = Review.objects.get(pk=review_id)
+#         context['review'] = review
+#         return context
 
     # Now not needed as we have used generetic templateview class
     # def get(self, request):
