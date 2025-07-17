@@ -10,6 +10,14 @@ from .models import Review
 
 
 class ReviewView(View):
+ # we can use FormView here and no need of get and post method it will automatically handle that
+ # form_class = ReviewForm
+ # template_name = "reviews/review.html"
+ # success_url = "/thank-you"
+
+    #  def form_invalid(self, form):
+    #      form.save()
+    #      return super().form_invalid(form)
 
     def get(self, request):
         form = ReviewForm()
@@ -63,7 +71,7 @@ class SingleReviewView(DetailView):
     model = Review
     context_object_name = "review"
 
-    ? need to change the param name to ** pk ** in urls so that it can search by primary key
+    # need to change the param name to ** pk ** in urls so that it can search by primary key
 
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
